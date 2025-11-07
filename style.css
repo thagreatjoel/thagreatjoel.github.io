@@ -1,0 +1,229 @@
+/* ======= Local Phantom Sans Setup ======= */
+@font-face {
+  font-family: "Phantom Sans";
+  src: url("fonts/PhantomSans0.8-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Phantom Sans";
+  src: url("fonts/PhantomSans0.8-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Phantom Sans";
+  src: url("fonts/PhantomSans0.8-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Phantom Sans";
+  src: url("fonts/PhantomSans0.8-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Phantom Sans";
+  src: url("fonts/PhantomSans0.8-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ======= Color Variables ======= */
+:root {
+  --red: #ec3750;
+  --blue: #338eda;
+  --yellow: #f1c40f;
+  --bg: #0e305b;
+  --bg-darker: #081c34;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.85);
+  --accent: var(--yellow);
+}
+
+/* ======= Base ======= */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Phantom Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ======= Background Grid ======= */
+#motion-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveGrid 30s linear infinite;
+}
+@keyframes moveGrid {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 200px 200px, 200px 200px; }
+}
+
+/* ======= Header ======= */
+header {
+  position: relative;
+  z-index: 2;
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+header h1 {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+nav { display: flex; gap: 20px; }
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+nav a:hover { color: var(--accent); }
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  nav {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    background: rgba(0,0,0,0.9);
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 30px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    height: 100vh;
+    width: 70%;
+    backdrop-filter: blur(10px);
+    z-index: 5;
+  }
+  nav.active { transform: translateX(0); }
+  .menu-btn { display: block; }
+}
+
+/* ======= Hero ======= */
+.hero {
+  position: relative;
+  z-index: 2;
+  padding: 120px 40px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.hero h2 {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.hero p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+.btn {
+  background-color: var(--accent);
+  color: #000;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(241,196,15,0.4);
+  transition: 0.25s ease;
+}
+.btn:hover {
+  background-color: #ffda44;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(241,196,15,0.5);
+}
+
+/* ======= Footer ======= */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 15px;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+footer a { color: var(--accent); text-decoration: none; margin: 0 6px; }
+footer a:hover { text-decoration: underline; }
+
+/* ======= Loader ======= */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-darker);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#loader .pulse {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.4s ease-in-out infinite;
+  margin-bottom: 16px;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.4; }
+}
+#content { opacity: 0; transition: opacity 0.6s ease; }
+#content.visible { opacity: 1; }
+
+@media (max-width: 768px) {
+  .hero { padding: 80px 24px; text-align: center; justify-content: center; }
+  .hero h2, .hero p { text-align: center; }
+}
