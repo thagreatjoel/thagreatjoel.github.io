@@ -1,290 +1,121 @@
-/* ======= Phantom Sans Local Fonts ======= */
+/* === Phantom Sans local fonts === */
 @font-face {
   font-family: "Phantom Sans";
   src: url("./fonts/PhantomSans0.8-Regular.ttf") format("truetype");
   font-weight: 400;
-  font-style: normal;
 }
 @font-face {
   font-family: "Phantom Sans";
   src: url("./fonts/PhantomSans0.8-Bold.ttf") format("truetype");
   font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Phantom Sans";
-  src: url("./fonts/PhantomSans0.8-Semibold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Phantom Sans";
-  src: url("./fonts/PhantomSans0.8-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Phantom Sans";
-  src: url("./fonts/PhantomSans0.8-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
 }
 
-/* ======= Color Palette ======= */
+/* === Variables === */
 :root {
-  --red: #ec3750;
-  --blue: #338eda;
-  --yellow: #f1c40f;
-  --bg: #0e305b;
-  --bg-darker: #081c34;
-  --text: #ffffff;
-  --muted: rgba(255, 255, 255, 0.85);
-  --accent: var(--yellow);
+  --text: #032b55;
+  --accent: #f1c40f;
+  --bg: #e8f1fa;
 }
 
-/* ======= Global Styles ======= */
-html,
-body {
+/* === Global === */
+html,body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  font-family: "Phantom Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
+  font-family: "Phantom Sans", system-ui, sans-serif;
   color: var(--text);
+  background: var(--bg) url("./images/background.png") center/cover no-repeat fixed;
+  text-align: center;
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  -webkit-tap-highlight-color: transparent;
 }
 
-/* ======= Animated Background Grid ======= */
-#motion-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: moveGrid 30s linear infinite;
-}
-@keyframes moveGrid {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-  100% {
-    background-position: 200px 200px, 200px 200px;
-  }
-}
-
-/* ======= Header ======= */
+/* === Header & Nav === */
 header {
-  position: relative;
-  z-index: 2;
-  padding: 16px 28px;
+  position: absolute;
+  top: 0; left: 0; width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px 48px;
+  box-sizing: border-box;
 }
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.ribbon img {
+  height: 60px;
 }
-
-.brand img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-header h1 {
-  font-size: 22px;
-  margin: 0;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: -0.02em;
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-}
-
 nav a {
-  color: var(--muted);
+  margin: 0 16px;
   text-decoration: none;
-  font-weight: 500;
-  transition: 0.25s ease;
-}
-
-nav a:hover {
-  color: var(--accent);
-}
-
-.menu-btn {
-  display: none;
-  background: none;
-  border: none;
   color: var(--text);
-  font-size: 1.8rem;
-  cursor: pointer;
+  font-weight: 600;
+  transition: color .25s;
 }
+nav a:hover { color: var(--accent); }
 
-/* ======= Responsive Navigation ======= */
-@media (max-width: 768px) {
-  nav {
-    position: fixed;
-    top: 64px;
-    right: 0;
-    background: rgba(0, 0, 0, 0.9);
-    flex-direction: column;
-    gap: 16px;
-    padding: 20px 30px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    height: 100vh;
-    width: 70%;
-    backdrop-filter: blur(10px);
-    z-index: 5;
-  }
-
-  nav.active {
-    transform: translateX(0);
-  }
-
-  .menu-btn {
-    display: block;
-  }
-}
-
-/* ======= Hero Section ======= */
+/* === Hero === */
 .hero {
-  position: relative;
-  z-index: 2;
-  padding: 120px 40px 100px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
-  max-width: 1000px;
-  margin: 0 auto;
+  min-height: 100vh;
 }
-
-.hero h2 {
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
-  line-height: 1.1;
+.hero .content {
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.4);
+  padding: 40px 60px;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.hero-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
-  margin-bottom: 18px;
-  color: var(--text);
+  margin: 0 0 12px;
 }
-
 .hero p {
-  font-size: 1.1rem;
-  color: var(--muted);
-  line-height: 1.6;
-  max-width: 600px;
-  margin-bottom: 36px;
+  font-size: 1.2rem;
+  margin-bottom: 24px;
 }
-
 .btn {
-  background-color: var(--accent);
-  color: #000;
-  border: none;
-  padding: 14px 28px;
+  display: inline-block;
+  padding: 12px 32px;
+  border: 2px solid var(--text);
   border-radius: 9999px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(241, 196, 15, 0.4);
-  transition: 0.25s ease;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s;
+  background: transparent;
 }
-
 .btn:hover {
-  background-color: #ffda44;
+  background: var(--accent);
+  color: #000;
   transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(241, 196, 15, 0.5);
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
 
-/* ======= Footer ======= */
+/* === Footer === */
 footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  text-align: center;
   padding: 12px 0;
-  font-size: 15px;
-  color: var(--muted);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(255,255,255,0.6);
   backdrop-filter: blur(10px);
-  z-index: 10;
+  font-size: 0.9rem;
 }
-
 footer a {
-  color: var(--accent);
+  color: var(--text);
   text-decoration: none;
   margin: 0 6px;
 }
+footer a:hover { color: var(--accent); }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* ======= Loader ======= */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: var(--bg-darker);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-#loader .pulse {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: pulse 1.4s ease-in-out infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 0.4;
-  }
-}
-
-#content {
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-#content.visible {
-  opacity: 1;
-}
-
-/* ======= Mobile Adjustments ======= */
+/* === Responsive === */
 @media (max-width: 768px) {
-  .hero {
-    padding: 80px 24px;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .hero h2,
-  .hero p {
-    text-align: center;
-  }
+  header { flex-direction: column; gap: 12px; padding: 16px; }
+  .hero .content { width: 90%; padding: 32px 20px; }
 }
