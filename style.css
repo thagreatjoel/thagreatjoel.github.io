@@ -1,161 +1,71 @@
-/* === Phantom Sans local fonts === */
-@font-face {
-  font-family: "Phantom Sans";
-  src: url("./fonts/PhantomSans0.8-Regular.ttf") format("truetype");
-  font-weight: 400;
-}
-@font-face {
-  font-family: "Phantom Sans";
-  src: url("./fonts/PhantomSans0.8-Bold.ttf") format("truetype");
-  font-weight: 700;
-}
+/* ---------- Reset & base ---------- */
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
 
-/* === Variables === */
-:root {
-  --text: #1a1a1a;
-  --accent: #f1c40f;
-  --muted: #555;
-  --bg: #ffffff;
-  --border: #eaeaea;
-}
-
-/* === Base === */
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: "Phantom Sans", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  text-align: center;
-}
-
-/* === Header === */
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 24px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-header .ribbon img {
-  height: 60px;
-}
-nav a {
-  margin: 0 16px;
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 600;
-  transition: color .25s;
-}
-nav a:hover { color: var(--accent); }
-
-/* === Hero Section === */
+/* ---------- Hero (mobile-first) ---------- */
+/* Mobile uses the flat vector PNG by default */
 .hero {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("./images/background-mobile.png");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #fdfdfd, #f5f5f5);
   position: relative;
-  overflow: hidden;
 }
-.hero .content {
-  background: rgba(255,255,255,0.8);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 50px 70px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+/* Optional overlay styling (keeps image readable) */
+.hero-overlay {
+  text-align: center;
+  padding: 28px;
+  z-index: 2;
+  /* subtle translucent card so overlay doesn't "exploit" image */
+  background: rgba(255,255,255,0.0); /* set to 0 to not block image */
+  max-width: 1000px;
+  width: calc(100% - 48px);
 }
-.hero-logo {
-  width: 120px;
-  height: auto;
-  margin-bottom: 16px;
-}
-.hero h1 {
-  font-size: clamp(2.4rem, 6vw, 4rem);
+.title {
+  margin: 0;
   font-weight: 800;
-  margin: 0 0 12px;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: rgba(6,48,79,0.95);
+  text-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
-.hero p {
-  font-size: 1.2rem;
-  color: var(--muted);
-  margin-bottom: 24px;
+.subtitle {
+  margin: 12px 0 24px;
+  color: rgba(6,48,79,0.75);
+  font-size: clamp(1rem, 2.6vw, 1.35rem);
 }
-.btn {
+.cta {
   display: inline-block;
-  padding: 12px 32px;
-  border: 2px solid var(--text);
+  padding: 10px 26px;
   border-radius: 9999px;
-  color: var(--text);
-  font-weight: 600;
+  border: 2px solid rgba(6,48,79,0.18);
+  background: rgba(241,196,15,0.0); /* transparent so it doesn't alter image */
+  color: rgba(6,48,79,0.95);
   text-decoration: none;
-  transition: 0.25s;
-  background: transparent;
+  font-weight: 700;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
-.btn:hover {
-  background: var(--accent);
-  color: #000;
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
-}
+.cta:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(6,48,79,0.08); }
 
-/* === Mascots === */
-.mascots {
-  position: absolute;
-  bottom: 40px;
-  display: flex;
-  gap: 60px;
-}
-.mascot {
-  width: 50px;
-  height: 60px;
-  border-radius: 25px 25px 10px 10px;
-  position: relative;
-}
-.mascot::before {
-  content: '';
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-}
-.mascot.brown { background: #6f3e2e; }
-.mascot.brown::before { background: #6f3e2e; }
+/* ---------- Desktop: swap to painted background ---------- */
+/* Use a breakpoint where you consider desktop. 900px is safe; change as needed. */
+@media (min-width: 900px) {
+  .hero {
+    background-image: url("./images/background-desktop.png");
+    background-position: center center;
+    background-size: cover;
+  }
 
-.mascot.dark { background: #4a2f1f; }
-.mascot.dark::before { background: #4a2f1f; }
+  .hero-overlay {
+    /* slightly stronger overlay text on large screens */
+    padding: 40px;
+  }
 
-/* === Footer === */
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 12px 0;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid var(--border);
-  font-size: 0.9rem;
-}
-footer a {
-  color: var(--text);
-  text-decoration: none;
-  margin: 0 6px;
-}
-footer a:hover { color: var(--accent); }
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  header { flex-direction: column; gap: 12px; padding: 16px; }
-  .hero .content { width: 90%; padding: 32px 20px; }
-  .mascots { gap: 30px; bottom: 30px; }
+  .title { font-size: clamp(3rem, 6vw, 6rem); }
+  .subtitle { font-size: 1.35rem; }
 }
