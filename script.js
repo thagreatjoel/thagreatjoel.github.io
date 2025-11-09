@@ -1,8 +1,8 @@
 // -------------------------------------------
-// 🧊 Great Club – Safe Access Script (Final)
+// 🧊 Great Club – Basic Script
 // -------------------------------------------
 
-// Fade-in effect
+// Fade-in after loading
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
@@ -10,31 +10,14 @@ window.addEventListener("load", () => {
   if (content) content.classList.add("visible");
 });
 
-// Mobile menu toggle
+// Mobile navigation toggle
 const menuBtn = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 if (menuBtn && navMenu) {
   menuBtn.addEventListener("click", () => {
     navMenu.classList.toggle("active");
   });
-}
-
-// Device detection
-const ua = navigator.userAgent;
-const isMobile = /Android|iPhone|iPad|iPod|webOS|Opera Mini|IEMobile/i.test(ua);
-const isDesktop = /Windows NT|Macintosh|Linux x86_64|X11/i.test(ua);
-
-// Screen width adjusted for DPI
-const cssWidth = (window.innerWidth || document.documentElement.clientWidth) / window.devicePixelRatio;
-
-// ✅ Allow all real desktops
-if (isDesktop) {
-  console.log("✅ Real desktop user – allowed");
-}
-// ✅ Allow normal mobile users
-else if (isMobile && cssWidth <= 900) {
-  console.log("✅ Mobile user – allowed");
-}
+}}
 // 🚫 Block mobiles forcing desktop mode
 else if (isMobile && cssWidth > 900) {
   console.log("🚫 Mobile user in desktop mode – blocked");
