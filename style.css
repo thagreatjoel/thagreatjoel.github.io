@@ -1,40 +1,148 @@
-/* ---------- Reset & base ---------- */
-* { box-sizing: border-box; }
-html,body { height: 100%; margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+/* ------------------------------
+   🌨️ Great Club Styles
+   Author: Joel
+   ------------------------------ */
 
-/* ---------- Hero (mobile-first) ---------- */
-/* Mobile uses the flat vector PNG by default */
-.hero {
-  min-height: 100vh;
-  width: 100%;
-  background-image: url("./images/background-mobile.png");
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap');
+
+/* Root Colors */
+:root {
+  --primary: #f1c40f; /* Vivid yellow accent */
+  --text: #0e305b;    /* Dark winter blue */
+  --muted: #e0e6ed;   /* Light gray for soft text */
+  --bg-dark: #0d1b2a; /* Deep night blue */
+  --bg-light: #ffffff;
 }
 
-/* Optional overlay styling (keeps image readable) */
-.hero-overlay {
-  text-align: center;
-  padding: 28px;
-  z-index: 2;
-  /* subtle translucent card so overlay doesn't "exploit" image */
-  background: rgba(255,255,255,0.0); /* set to 0 to not block image */
-  max-width: 1000px;
-  width: calc(100% - 48px);
-}
-.title {
+/* Base Reset */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-weight: 800;
-  font-size: clamp(2rem, 6vw, 4rem);
-  color: rgba(6,48,79,0.95);
-  text-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  padding: 0;
 }
-.subtitle {
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Baloo 2', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* ------------------------------
+   MAIN PAGE (index.html)
+   ------------------------------ */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('./images/background-mobile.png') no-repeat center center/cover;
+  position: relative;
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13, 27, 42, 0.6) 0%, rgba(13, 27, 42, 0.1) 60%);
+}
+
+.main h1 {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.main p {
+  position: relative;
+  z-index: 2;
+  color: var(--muted);
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* ------------------------------
+   BLOCKED PAGE (blocked.html)
+   ------------------------------ */
+.blocked {
+  background: linear-gradient(180deg, #102542, #1b3a6b);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.warning {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.warning h2 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  color: var(--primary);
+  margin-bottom: 16px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.warning p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #f7f7f7;
+  line-height: 1.5;
+  max-width: 420px;
+}
+
+/* ------------------------------
+   RESPONSIVE STYLING
+   ------------------------------ */
+
+/* Tablets & small laptops */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main h1 { font-size: 3.2rem; }
+  .main p { font-size: 1.2rem; }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  .main {
+    background: url('./images/background-desktop.png') no-repeat center center/cover;
+  }
+}
+
+/* ------------------------------
+   SMALL EXTRAS
+   ------------------------------ */
+.warning::before {
+  content: "🚫";
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+a:hover {
+  text-decoration: underline;
+}.subtitle {
   margin: 12px 0 24px;
   color: rgba(6,48,79,0.75);
   font-size: clamp(1rem, 2.6vw, 1.35rem);
