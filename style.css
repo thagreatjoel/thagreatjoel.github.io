@@ -39,7 +39,7 @@ html, body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url('./images/background-mobile.png') no-repeat center center/cover;
+  background: url('images/background-mobile.png') no-repeat center center/cover;
   position: relative;
   color: #ffffff;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -106,7 +106,7 @@ html, body {
    ------------------------------ */
 @media (min-width: 1025px) {
   .main {
-    background: url('./images/background-desktop.png') no-repeat center center/cover;
+    background: url('images/background-desktop.png') no-repeat center center/cover;
   }
 }
 
