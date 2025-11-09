@@ -95,10 +95,10 @@ nav a:hover { color: var(--accent); }
   nav.active { transform: translateX(0); }
 }
 
-/* Hero Section */
+/* Mobile background */
 .hero {
   height: 100vh;
-  background: url("images/background-mobile.png") no-repeat center center / cover;
+  background: url("./images/background-mobile.png") no-repeat center center / cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,10 +110,9 @@ nav a:hover { color: var(--accent); }
 /* Desktop background */
 @media only screen and (min-width: 769px) {
   .hero {
-    background: url("images/background-desktop.png") no-repeat center center / cover;
+    background: url("./images/background-desktop.png") no-repeat center center / cover;
   }
 }
-
 .hero h2 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 16px;
