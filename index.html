@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Great Club</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <main class="main">
-    <h1>Welcome to Great Club</h1>
-    <p>Where creativity meets winter ❄️</p>
-  </main>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="pulse"></div>
+    <p>Loading Great Club...</p>
+  </div>
+
+  <!-- Content -->
+  <div id="content">
+    <header>
+      <div class="brand">
+        <h1>Great Club</h1>
+      </div>
+      <button class="menu-btn" id="menuToggle">☰</button>
+      <nav id="navMenu">
+        <a href="#">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h2>Where creativity and technology come together.</h2>
+        <p>Welcome to <strong>Great Club</strong> — a place where imagination and innovation thrive.</p>
+        <button class="btn">Join the Movement</button>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Great Club • <a href="#">GitHub</a> • <a href="#">Discord</a>
+    </footer>
+  </div>
 </body>
 </html>
