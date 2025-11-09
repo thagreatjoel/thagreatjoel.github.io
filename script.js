@@ -17,13 +17,4 @@ if (menuBtn && navMenu) {
   menuBtn.addEventListener("click", () => {
     navMenu.classList.toggle("active");
   });
-}}
-// 🚫 Block mobiles forcing desktop mode
-else if (isMobile && cssWidth > 900) {
-  console.log("🚫 Mobile user in desktop mode – blocked");
-  window.location.href = "blocked.html";
-}
-// ✅ Allow unknown/others (like bots, TVs)
-else {
-  console.log("✅ Unknown device – allowed");
 }
