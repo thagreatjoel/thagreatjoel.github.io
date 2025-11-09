@@ -1,21 +1,31 @@
-// Fade-in after loading
+// -------------------------------------------
+// 🧊 Great Club – Unified Script
+// -------------------------------------------
+
+// 🌀 Fade-in effect after loading
 window.addEventListener("load", () => {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("content").classList.add("visible");
+  const loader = document.getElementById("loader");
+  const content = document.getElementById("content");
+  if (loader) loader.style.display = "none";
+  if (content) content.classList.add("visible");
 });
 
-// Mobile navigation toggle
+// 📱 Mobile navigation toggle
 const menuBtn = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
-menuBtn.addEventListener("click", () => navMenu.classList.toggle("active"));
+if (menuBtn && navMenu) {
+  menuBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
 
-// Detect if device is mobile
+// 🔍 Detect if device is mobile
 const isMobile = /Android|iPhone|iPad|iPod|webOS|Opera Mini|IEMobile/i.test(navigator.userAgent);
 
-// Get the approximate screen width
+// 💻 Get screen width
 const screenWidth = window.innerWidth || document.documentElement.clientWidth;
 
-// If it's a mobile device pretending to be desktop
+// 🚫 Block "Desktop Mode" on mobile browsers
 if (isMobile && screenWidth > 900) {
   window.location.href = "blocked.html";
 }
