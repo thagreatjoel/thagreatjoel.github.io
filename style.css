@@ -1,6 +1,5 @@
 /* ------------------------------
    🌨️ Great Club Styles
-   Author: Joel
    ------------------------------ */
 
 /* Font Import */
@@ -8,18 +7,17 @@
 
 /* Root Colors */
 :root {
-  --primary: #f1c40f; /* Vivid yellow accent */
-  --text: #0e305b;    /* Dark winter blue */
-  --muted: #e0e6ed;   /* Light gray for soft text */
-  --bg-dark: #0d1b2a; /* Deep night blue */
-  --bg-light: #ffffff;
+  --primary: #f1c40f; /* vivid yellow accent */
+  --text: #0e305b;    /* deep winter blue */
+  --muted: #e0e6ed;   /* light gray */
+  --bg-dark: #0d1b2a; /* dark navy */
 }
 
-/* Base Reset */
+/* Reset */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -33,7 +31,7 @@ html, body {
 }
 
 /* ------------------------------
-   MAIN PAGE (index.html)
+   MAIN PAGE
    ------------------------------ */
 .main {
   display: flex;
@@ -51,7 +49,7 @@ html, body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(13, 27, 42, 0.6) 0%, rgba(13, 27, 42, 0.1) 60%);
+  background: linear-gradient(to top, rgba(13, 27, 42, 0.7) 0%, rgba(13, 27, 42, 0.2) 60%);
 }
 
 .main h1 {
@@ -73,7 +71,7 @@ html, body {
 }
 
 /* ------------------------------
-   BLOCKED PAGE (blocked.html)
+   BLOCKED PAGE
    ------------------------------ */
 .blocked {
   background: linear-gradient(180deg, #102542, #1b3a6b);
@@ -82,14 +80,9 @@ html, body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: hidden;
 }
 
 .warning {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   padding: 40px;
 }
@@ -111,23 +104,12 @@ html, body {
 /* ------------------------------
    RESPONSIVE STYLING
    ------------------------------ */
-
-/* Tablets & small laptops */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .main h1 { font-size: 3.2rem; }
-  .main p { font-size: 1.2rem; }
-}
-
-/* Desktop styles */
 @media (min-width: 1025px) {
   .main {
     background: url('./images/background-desktop.png') no-repeat center center/cover;
   }
 }
 
-/* ------------------------------
-   SMALL EXTRAS
-   ------------------------------ */
 .warning::before {
   content: "🚫";
   font-size: 2.5rem;
@@ -142,38 +124,4 @@ a {
 }
 a:hover {
   text-decoration: underline;
-}.subtitle {
-  margin: 12px 0 24px;
-  color: rgba(6,48,79,0.75);
-  font-size: clamp(1rem, 2.6vw, 1.35rem);
-}
-.cta {
-  display: inline-block;
-  padding: 10px 26px;
-  border-radius: 9999px;
-  border: 2px solid rgba(6,48,79,0.18);
-  background: rgba(241,196,15,0.0); /* transparent so it doesn't alter image */
-  color: rgba(6,48,79,0.95);
-  text-decoration: none;
-  font-weight: 700;
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.cta:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(6,48,79,0.08); }
-
-/* ---------- Desktop: swap to painted background ---------- */
-/* Use a breakpoint where you consider desktop. 900px is safe; change as needed. */
-@media (min-width: 900px) {
-  .hero {
-    background-image: url("./images/background-desktop.png");
-    background-position: center center;
-    background-size: cover;
-  }
-
-  .hero-overlay {
-    /* slightly stronger overlay text on large screens */
-    padding: 40px;
-  }
-
-  .title { font-size: clamp(3rem, 6vw, 6rem); }
-  .subtitle { font-size: 1.35rem; }
 }
