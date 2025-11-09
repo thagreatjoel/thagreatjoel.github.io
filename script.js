@@ -1,6 +1,4 @@
-// -------------------------------------------
-// 🧊 Great Club – Basic Script
-// -------------------------------------------
+// 🧊 Great Club Script
 
 // Fade-in after loading
 window.addEventListener("load", () => {
