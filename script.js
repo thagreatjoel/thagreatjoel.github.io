@@ -1,8 +1,8 @@
 // -------------------------------------------
-// 🧊 Great Club – Unified Script
+// 🧊 Great Club – Smart Access Script
 // -------------------------------------------
 
-// 🌀 Fade-in effect after loading
+// Fade-in effect after loading
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
   if (content) content.classList.add("visible");
 });
 
-// 📱 Mobile navigation toggle
+// Mobile navigation toggle
 const menuBtn = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 if (menuBtn && navMenu) {
@@ -19,13 +19,13 @@ if (menuBtn && navMenu) {
   });
 }
 
-// 🔍 Detect if device is mobile
+// Detect if device is mobile
 const isMobile = /Android|iPhone|iPad|iPod|webOS|Opera Mini|IEMobile/i.test(navigator.userAgent);
 
-// 💻 Get screen width
-const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+// Get effective screen width (corrected for pixel density)
+const cssWidth = (window.innerWidth || document.documentElement.clientWidth) / window.devicePixelRatio;
 
-// 🚫 Block "Desktop Mode" on mobile browsers
-if (isMobile && screenWidth > 900) {
+// 🚫 Block only mobile users in *forced desktop mode*
+if (isMobile && cssWidth > 900) {
   window.location.href = "blocked.html";
 }
