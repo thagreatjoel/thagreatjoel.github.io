@@ -1,24 +1,14 @@
-// Page loader with smooth fade and safety timeout
+// Wait for full site load
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
-  const loadingText = document.getElementById("loadingText");
 
-  let progress = 0;
-  const interval = setInterval(() => {
-    if (progress < 100) {
-      progress += 5;
-      loadingText.textContent = `Loading... ${progress}%`;
-    } else {
-      clearInterval(interval);
-      loadingText.textContent = "Ready!";
-      loader.classList.add("hidden");
-      setTimeout(() => {
-        loader.style.display = "none";
-        content.classList.add("visible");
-      }, 800);
-    }
-  }, 60); // fake loading progress for smooth animation
+  // Fade out loader and show content
+  loader.classList.add("hidden");
+  setTimeout(() => {
+    loader.style.display = "none";
+    content.classList.add("visible");
+  }, 800);
 });
 
 // Mobile menu toggle
@@ -28,13 +18,8 @@ if (menuBtn && mobileMenu) {
   menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("active"));
 }
 
-// Mobile fullscreen (address bar hides)
-setTimeout(() => window.scrollTo(0, 1), 600);      img.addEventListener("error", imageLoaded);
-    }
-  });
-
-  // mobile fullscreen
-  setTimeout(() => {
+// Small scroll to hide address bar (mobile)
+setTimeout(() => window.scrollTo(0, 1), 600);  setTimeout(() => {
     window.scrollTo(0, 1);
   }, 500);
 });
