@@ -6,70 +6,73 @@
   --muted: rgba(255, 255, 255, 0.85);
 }
 
-/* Basic */
+/* ------------------------------
+   BASE STYLING
+   ------------------------------ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
   min-height: 100%;
   width: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
   font-family: 'Baloo 2', sans-serif;
   color: var(--text);
   background-color: var(--bg);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
-/* Loader */
+/* ------------------------------
+   LOADER (NO PERCENTAGE)
+   ------------------------------ */
 #loader {
   position: fixed;
   inset: 0;
-  background: var(--bg);
+  background: linear-gradient(180deg, #6fb8d5 0%, #4da3c1 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 9999;
-  transition: opacity 1s ease, visibility 1s ease;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
 }
-#loader.hidden { opacity: 0; visibility: hidden; }
 
-.loader-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, #6fb8d5, #4da3c1);
-  opacity: 0.9;
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
-.loader-content {
-  position: relative;
-  text-align: center;
-  z-index: 2;
-}
+
 .loader-logo {
-  width: 130px;
-  margin-bottom: 16px;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.4));
-  animation: fadePulse 2s ease-in-out infinite;
-}
-#loadingText {
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 1.2rem;
-  text-shadow: 0 0 8px rgba(0,0,0,0.2);
-}
-@keyframes fadePulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
+  width: 120px;
+  animation: pulseGlow 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
 }
 
-/* Main content */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.6));
+  }
+}
+
+/* Fade-in when loaded */
 #content {
   opacity: 0;
   transition: opacity 1s ease;
 }
-#content.visible { opacity: 1; }
+#content.visible {
+  opacity: 1;
+}
 
-/* --- Hack Club Flag --- */
+/* ------------------------------
+   HACK CLUB FLAG
+   ------------------------------ */
 .hackclub-flag {
   position: fixed;
   top: 18px;
@@ -83,7 +86,9 @@ html, body {
   transform: scale(1.05);
 }
 
-/* Header */
+/* ------------------------------
+   HEADER
+   ------------------------------ */
 header {
   position: absolute;
   top: 0;
@@ -94,6 +99,7 @@ header {
   align-items: center;
   z-index: 10;
 }
+
 .logo {
   position: absolute;
   left: 140px;
@@ -103,22 +109,28 @@ header {
   color: #fff;
 }
 
-/* Desktop Navigation */
+/* ------------------------------
+   DESKTOP NAVIGATION
+   ------------------------------ */
 .desktop-nav {
   display: flex;
   gap: 32px;
 }
+
 .desktop-nav a {
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
   transition: opacity 0.2s ease;
 }
+
 .desktop-nav a:hover {
   opacity: 0.8;
 }
 
-/* Mobile Menu Button */
+/* ------------------------------
+   MOBILE MENU
+   ------------------------------ */
 .menu-btn {
   display: none;
   background: none;
@@ -129,12 +141,11 @@ header {
   z-index: 12;
 }
 
-/* Mobile Navigation */
 .mobile-nav {
   position: fixed;
   top: 0;
   right: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   flex-direction: column;
   height: 100vh;
   width: 70%;
@@ -145,9 +156,11 @@ header {
   display: flex;
   text-align: center;
 }
+
 .mobile-nav.active {
   transform: translateX(0);
 }
+
 .mobile-nav a {
   color: #fff;
   text-decoration: none;
@@ -155,11 +168,14 @@ header {
   font-weight: 700;
   transition: 0.2s;
 }
+
 .mobile-nav a:hover {
   color: var(--muted);
 }
 
-/* Hero Section */
+/* ------------------------------
+   HERO SECTION
+   ------------------------------ */
 .hero {
   height: 100vh;
   width: 100%;
@@ -170,16 +186,22 @@ header {
   flex-direction: column;
   text-align: center;
   padding: 20px;
+  position: relative;
 }
+
 .hero-logo {
   width: clamp(200px, 40vw, 350px);
   margin-bottom: 16px;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2));
 }
+
 .tagline {
   color: var(--muted);
   font-size: 1.2rem;
   margin-bottom: 24px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
+
 .btn {
   background: #ffffff;
   color: #0e305b;
@@ -189,8 +211,12 @@ header {
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.25s ease;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
-.btn:hover { transform: scale(1.05); }
+
+.btn:hover {
+  transform: scale(1.05);
+}
 
 /* Desktop Background */
 @media (min-width: 769px) {
@@ -199,18 +225,33 @@ header {
   }
 }
 
-/* Responsive Menus */
+/* ------------------------------
+   RESPONSIVE LAYOUT
+   ------------------------------ */
 @media (max-width: 768px) {
-  .desktop-nav { display: none; }
-  .menu-btn { display: block; position: absolute; right: 20px; top: 20px; }
-  .hackclub-flag { width: 90px; top: 14px; left: 14px; }
-}
-@media (min-width: 769px) {
-  .mobile-nav, .menu-btn { display: none !important; }
-}   padding-top: 100px;
-    gap: 30px;
+  .desktop-nav {
+    display: none;
   }
+  .menu-btn {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  .hackclub-flag {
+    width: 90px;
+    top: 14px;
+    left: 14px;
+  }
+  .logo {
+    left: 115px;
+    font-size: 24px;
+  }
+}
 
-  nav.active { transform: translateX(0); }
-  nav a { font-size: 1.5rem; }
+@media (min-width: 769px) {
+  .mobile-nav,
+  .menu-btn {
+    display: none !important;
+  }
 }
