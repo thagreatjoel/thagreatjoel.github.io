@@ -1,18 +1,27 @@
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
+  const loadingText = document.getElementById("loadingText");
 
-  // Force reload images fresh each time
   const images = [...document.images];
   let loaded = 0;
   const total = images.length;
 
+  // update loading percentage
+  function updateProgress() {
+    const percent = Math.floor((loaded / total) * 100);
+    loadingText.textContent = `Loading... ${percent}%`;
+  }
+
+  // when image loads or errors
   function imageLoaded() {
     loaded++;
+    updateProgress();
     if (loaded === total) finishLoading();
   }
 
   function finishLoading() {
+    loadingText.textContent = "Ready!";
     loader.classList.add("hidden");
     setTimeout(() => {
       loader.style.display = "none";
@@ -20,7 +29,7 @@ window.addEventListener("load", () => {
     }, 1000);
   }
 
-  if (images.length === 0) finishLoading();
+  if (total === 0) finishLoading();
   else images.forEach(img => {
     if (img.complete) imageLoaded();
     else {
@@ -29,12 +38,18 @@ window.addEventListener("load", () => {
     }
   });
 
-  // Force fullscreen-like effect for mobile
+  // mobile fullscreen
   setTimeout(() => {
     window.scrollTo(0, 1);
   }, 500);
 });
 
+// mobile nav toggle
+const menuBtn = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+if (menuBtn && navMenu) {
+  menuBtn.addEventListener("click", () => navMenu.classList.toggle("active"));
+}
 // Mobile menu toggle
 const menuBtn = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
