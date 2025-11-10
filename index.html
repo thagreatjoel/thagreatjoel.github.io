@@ -1,1 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Great Club</title>
+  <meta name="theme-color" content="#6fb8d5" />
+  <link rel="icon" href="https://assets.hackclub.com/flag-orpheus-left.png" />
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap');
+
+    :root {
+      --bg: #6fb8d5;
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.85);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Baloo 2', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, #6fb8d5 0%, #4da3c1 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+
+    .loader-logo {
+      width: 120px;
+      animation: pulseGlow 1.8s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    }
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+        filter: drop-shadow(0 0 25px rgba(255,255,255,0.6));
+      }
+    }
+
+    #content { opacity: 0; transition: opacity 1s ease; }
+    #content.visible { opacity: 1; }
+
+    /* Flag */
+    .hackclub-flag {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      width: 110px;
+      z-index: 20;
+      filter: drop-shadow(0 2px 10px rgba(0,0,0,0.25));
+      transition: transform 0.3s ease;
+    }
+    .hackclub-flag:hover { transform: scale(1.05); }
+
+    /* Header */
+    header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .logo {
+      position: absolute;
+      left: 140px;
+      top: 22px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Desktop Navigation */
+    .desktop-nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .desktop-nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .desktop-nav a:hover { opacity: 0.8; }
+
+    /* Mobile Menu */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 12;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9);
+      flex-direction: column;
+      height: 100vh;
+      width: 70%;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      padding-top: 120px;
+      gap: 30px;
+      display: flex;
+      text-align: center;
+    }
+
+    .mobile-nav.active { transform: translateX(0); }
+
+    .mobile-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .mobile-nav a:hover { color: var(--muted); }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      width: 100%;
+      background: url('images/background-mobile.png') no-repeat center center / cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .hero-logo {
+      width: clamp(200px, 40vw, 350px);
+      margin-bottom: 16px;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2));
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    }
+
+    .btn {
+      background: #ffffff;
+      color: #0e305b;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 9999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn:hover { transform: scale(1.05); }
+
+    @media (min-width: 769px) {
+      .hero {
+        background: url('images/background-desktop.png') no-repeat center center / cover;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .menu-btn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+      .hackclub-flag {
+        width: 90px;
+        top: 14px;
+        left: 14px;
+      }
+      .logo {
+        left: 115px;
+        font-size: 24px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-nav, .menu-btn { display: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <img src="images/greatclub-logo.png" alt="Loading..." class="loader-logo" />
+  </div>
+
+  <!-- Main Content -->
+  <div id="content">
+    <img src="https://assets.hackclub.com/flag-orpheus-left.png" alt="Hack Club Flag" class="hackclub-flag" />
+
+    <header>
+      <h1 class="logo">Great Club</h1>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav">
+        <a href="#">Home</a>
+        <a href="#">Projects</a>
+        <a href="#">About</a>
+        <a href="#">Join</a>
+      </nav>
+
+      <!-- Mobile Nav Button -->
+      <button id="menuToggle" class="menu-btn">☰</button>
+
+      <!-- Mobile Menu -->
+      <nav id="mobileMenu" class="mobile-nav">
+        <a href="#">Home</a>
+        <a href="#">Projects</a>
+        <a href="#">About</a>
+        <a href="#">Join</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <img src="images/greatclub-logo.png" alt="Great Club Logo" class="hero-logo" />
+        <p class="tagline">Where creativity and technology come together.</p>
+        <button class="btn" onclick="window.location.reload()">Reload</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Wait for full site load
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      const content = document.getElementById("content");
+
+      if (!loader || !content) return;
+
+      loader.classList.add("hidden");
+      setTimeout(() => {
+        loader.style.display = "none";
+        content.classList.add("visible");
+      }, 800);
+    });
+
+    // Mobile menu toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("active"));
+      }
+    });
+
+    // Small scroll to hide address bar (mobile)
+    setTimeout(() => window.scrollTo(0, 1), 600);
+  </script>
+</body>
+</html>
