@@ -1,14 +1,23 @@
+// Fade in after loading
 window.addEventListener("load", () => {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("content").classList.add("visible");
-});
+  const loader = document.getElementById("loader");
+  const content = document.getElementById("content");
 
-const menuBtn = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
-menuBtn.addEventListener("click", () => navMenu.classList.toggle("active"));
-// Force fullscreen-like view on mobile
-window.addEventListener("load", () => {
+  if (loader) loader.style.display = "none";
+  if (content) content.classList.add("visible");
+
+  // Force fullscreen-like view on mobile
   setTimeout(() => {
     window.scrollTo(0, 1);
-  }, 100); // wait for render
+  }, 300);
 });
+
+// Mobile menu toggle
+const menuBtn = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+if (menuBtn && navMenu) {
+  menuBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
