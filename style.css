@@ -11,7 +11,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  overflow: auto;
+  overflow: visible;
   font-family: 'Baloo 2', sans-serif;
   color: var(--text);
   background-color: var(--bg);
