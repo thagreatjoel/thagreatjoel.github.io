@@ -4,37 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Great Club</title>
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="icon" href="https://assets.hackclub.com/flag-orpheus-left.png" />
+  <link rel="stylesheet" href="style.css" />
   <meta name="theme-color" content="#6fb8d5" />
 </head>
 
 <body>
   <!-- Loader -->
   <div id="loader">
-    <div class="loader-overlay"></div>
-    <div class="loader-content">
-      <img src="./images/greatclub-logo.png" alt="Loading Great Club" class="loader-logo" />
-      <p id="loadingText">Loading... 0%</p>
-    </div>
+    <img src="images/greatclub-logo.png" alt="Loading..." class="loader-logo" />
   </div>
 
+  <!-- Content -->
   <div id="content">
-    <!-- Hack Club Flag -->
-    <img
-      src="https://assets.hackclub.com/flag-orpheus-left.png"
-      alt="Hack Club Flag"
-      class="hackclub-flag"
-    />
+    <img src="https://assets.hackclub.com/flag-orpheus-left.png" alt="Hack Club Flag" class="hackclub-flag" />
 
-    <!-- Header -->
     <header>
       <h1 class="logo">Great Club</h1>
 
-      <!-- Desktop Menu -->
+      <!-- Desktop Navigation -->
       <nav class="desktop-nav">
         <a href="#">Home</a>
         <a href="#">Projects</a>
+        <a href="#">About</a>
+        <a href="#">Join</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuToggle" class="menu-btn">☰</button>
+
+      <!-- Mobile Menu -->
+      <nav id="mobileMenu" class="mobile-nav">
+        <a href="#">Home</a>
+        <a href="#">Projects</a>
+        <a href="#">About</a>
+        <a href="#">Join</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <img src="images/greatclub-logo.png" alt="Great Club Logo" class="hero-logo" />
+        <p class="tagline">Where creativity and technology come together.</p>
+        <button class="btn" onclick="window.location.reload()">Reload</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>        <a href="#">Projects</a>
         <a href="#">About</a>
         <a href="#">Join</a>
       </nav>
