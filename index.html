@@ -1,53 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Great Club</title>
-
-  <!-- Load font -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Mobile stylesheet -->
-  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 768px)">
-  <!-- Desktop stylesheet -->
-  <link rel="stylesheet" href="css/desktop.css" media="(min-width: 769px)">
-
-  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="https://assets.hackclub.com/flag-orpheus-left-bw.png" />
+  <meta name="theme-color" content="#6fb8d5" />
 </head>
 <body>
-  <div id="loader">
-    <div class="pulse"></div>
-    <p>Loading Great Club...</p>
-  </div>
 
-  <img src="https://assets.hackclub.com/flag-orpheus-left-bw.png" alt="Hack Club Flag" class="hackclub-flag" />
-  <div id="content">
-    <header>
-      <h1>Great Club</h1>
-      <button class="menu-btn" id="menuToggle">☰</button>
-      <nav id="navMenu">
-        <a href="#">Home</a>
-        <a href="#">Projects</a>
-        <a href="#">About</a>
-      </nav>
-    </header>
+  <!-- Hack Club Flag -->
+  <img src="https://assets.hackclub.com/flag-orpheus-left-bw.png"
+       alt="Hack Club Flag"
+       class="hackclub-flag" />
 
-    <section class="hero">
-      <div>
-        <h2>Where creativity and technology come together.</h2>
-        <p>Welcome to <strong>Great Club</strong> — a place where imagination and innovation thrive.</p>
-        <button class="btn">Join the Movement</button>
-      </div>
-    </section>
+  <!-- Header -->
+  <header>
+    <h1 class="logo">Great Club</h1>
+    <button id="menuToggle" class="menu-btn">☰</button>
+    <nav id="navMenu">
+      <a href="#">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
 
-    <footer>
-      © 2025 Great Club • <a href="#">GitHub</a> • <a href="#">Discord</a>
-    </footer>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="./images/greatclub-logo.png" alt="Great Club Logo" class="hero-logo" />
+      <p class="tagline">Where creativity and technology come together.</p>
+      <button class="btn">Learn More</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Great Club · <a href="#">GitHub</a> · <a href="#">Discord</a></p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-</html>        
+</html>
