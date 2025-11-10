@@ -1,9 +1,11 @@
-// Wait for full site load
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
 
-  // Fade out loader and show content
+  // Safety check to ensure elements exist
+  if (!loader || !content) return;
+
+  // Fade out loader, fade in content
   loader.classList.add("hidden");
   setTimeout(() => {
     loader.style.display = "none";
@@ -12,29 +14,17 @@ window.addEventListener("load", () => {
 });
 
 // Mobile menu toggle
-const menuBtn = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-if (menuBtn && mobileMenu) {
-  menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("active"));
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-// Small scroll to hide address bar (mobile)
-setTimeout(() => window.scrollTo(0, 1), 600);  setTimeout(() => {
-    window.scrollTo(0, 1);
-  }, 500);
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("active"));
+  }
 });
 
-// mobile nav toggle
-const menuBtn = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
-if (menuBtn && navMenu) {
-  menuBtn.addEventListener("click", () => navMenu.classList.toggle("active"));
-}
-// Mobile menu toggle
-const menuBtn = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
-
-if (menuBtn && navMenu) {
+// Hide address bar on mobile
+setTimeout(() => window.scrollTo(0, 1), 600);if (menuBtn && navMenu) {
   menuBtn.addEventListener("click", () => {
     navMenu.classList.toggle("active");
   });
