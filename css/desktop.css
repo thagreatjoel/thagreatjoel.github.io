@@ -60,3 +60,32 @@ footer {
   color: var(--muted);
   background: rgba(0,0,0,0.3);
 }
+
+/* ------------------------------
+   Hack Club Flag (Top-Left)
+------------------------------ */
+.hackclub-flag {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: 64px;
+  height: auto;
+  z-index: 50;
+  opacity: 0.9;
+  user-select: none;
+  pointer-events: none; /* ensures it's decorative only */
+  transition: opacity 0.3s ease;
+}
+
+.hackclub-flag:hover {
+  opacity: 1;
+}
+
+/* Smaller size on mobile */
+@media (max-width: 768px) {
+  .hackclub-flag {
+    width: 48px;
+    top: 12px;
+    left: 12px;
+  }
+}
