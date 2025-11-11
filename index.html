@@ -63,25 +63,27 @@
     #content.visible { opacity: 1; }
 
     /* Flag */
- .hackclub-flag {
+ .hackclub-banner {
   position: fixed;
   top: 0;
   left: 0;
-  width: 110px;
+  width: 240px; /* fits the banner nicely */
   z-index: 20;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
-  transition: transform 0.25s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-.hackclub-flag:hover {
+.hackclub-banner:hover {
   transform: scale(1.03);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
+/* Adjust for mobile */
 @media (max-width: 768px) {
-  .hackclub-flag {
-    width: 90px;
+  .hackclub-banner {
+    width: 180px;
     top: 0;
-    left: 0;
+    left: -6px;
   }
 }
     /* Header */
@@ -239,8 +241,7 @@
 
   <!-- Main Content -->
   <div id="content">
-    <img src="https://assets.hackclub.com/flag-orpheus-left.png" alt="Hack Club Flag" class="hackclub-flag" />
-
+<img src="https://assets.hackclub.com/banners/2025.svg" alt="Hack Club 2025 Banner" class="hackclub-banner" />
     <header>
       <h1 class="logo">Great Club</h1>
 
